@@ -2069,7 +2069,7 @@ third_party_inference_model_map = {
         model_handler=LlamaHandler,
         input_price=None,
         output_price=None,
-        is_fc_model=True,
+        is_fc_model=False,
         underscore_to_dot=True,
     ),
     "llm-jp-3-13b": ModelConfig(
@@ -2081,7 +2081,7 @@ third_party_inference_model_map = {
         model_handler=LlamaHandler,
         input_price=None,
         output_price=None,
-        is_fc_model=True,
+        is_fc_model=False,
         underscore_to_dot=True,
     ),
 }
