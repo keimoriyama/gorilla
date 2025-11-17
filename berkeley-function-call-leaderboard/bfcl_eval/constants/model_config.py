@@ -2070,7 +2070,7 @@ third_party_inference_model_map = {
         input_price=None,
         output_price=None,
         is_fc_model=False,
-        underscore_to_dot=True,
+        underscore_to_dot=False,
     ),
     "llm-jp-3-13b": ModelConfig(
         model_name="llm-jp-3-13b",
@@ -2082,7 +2082,7 @@ third_party_inference_model_map = {
         input_price=None,
         output_price=None,
         is_fc_model=False,
-        underscore_to_dot=True,
+        underscore_to_dot=False,
     ),
 }
 
