@@ -42,6 +42,7 @@ from bfcl_eval.model_handler.local_inference.granite_3 import Granite3FCHandler
 from bfcl_eval.model_handler.local_inference.hammer import HammerHandler
 from bfcl_eval.model_handler.local_inference.llama import LlamaHandler
 from bfcl_eval.model_handler.local_inference.llama_3_1 import LlamaHandler_3_1
+from bfcl_eval.model_handler.local_inference.llm_jp_3 import LLMjp3Handler
 from bfcl_eval.model_handler.local_inference.minicpm import MiniCPMHandler
 from bfcl_eval.model_handler.local_inference.minicpm_fc import MiniCPMFCHandler
 from bfcl_eval.model_handler.local_inference.mistral_fc import MistralFCHandler
@@ -2066,7 +2067,7 @@ third_party_inference_model_map = {
         url="https://huggingface.co/llm-jp/llm-jp-3-1.8b",
         org="llm-jp",
         license="apache-2.0",
-        model_handler=LlamaHandler,
+        model_handler=LLMjp3Handler,
         input_price=None,
         output_price=None,
         is_fc_model=False,
@@ -2078,7 +2079,7 @@ third_party_inference_model_map = {
         url="https://huggingface.co/llm-jp/llm-jp-3-13b",
         org="llm-jp",
         license="apache-2.0",
-        model_handler=LlamaHandler,
+        model_handler=LLMjp3Handler,
         input_price=None,
         output_price=None,
         is_fc_model=False,
@@ -2090,7 +2091,7 @@ third_party_inference_model_map = {
         url="https://huggingface.co/llm-jp/llm-jp-3.1-13b-instruct4",
         org="llm-jp",
         license="apache-2.0",
-        model_handler=LlamaHandler,
+        model_handler=LLMjp3Handler,
         input_price=None,
         output_price=None,
         is_fc_model=False,

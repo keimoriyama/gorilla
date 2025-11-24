@@ -1,23 +1,20 @@
 import csv
-from datetime import datetime
 import os
+from datetime import datetime
+from importlib.metadata import version as _version
 from types import SimpleNamespace
 from typing import List, Optional
 
 import typer
-from importlib.metadata import version as _version
-from bfcl_eval._llm_response_generation import main as generation_main
-from bfcl_eval.constants.category_mapping import TEST_COLLECTION_MAPPING
-from bfcl_eval.constants.eval_config import (
-    DOTENV_PATH,
-    PROJECT_ROOT,
-    RESULT_PATH,
-    SCORE_PATH,
-)
-from bfcl_eval.constants.model_config import MODEL_CONFIG_MAPPING
-from bfcl_eval.eval_checker.eval_runner import main as evaluation_main
 from dotenv import load_dotenv
 from tabulate import tabulate
+
+from bfcl_eval._llm_response_generation import main as generation_main
+from bfcl_eval.constants.category_mapping import TEST_COLLECTION_MAPPING
+from bfcl_eval.constants.eval_config import (DOTENV_PATH, PROJECT_ROOT,
+                                             RESULT_PATH, SCORE_PATH)
+from bfcl_eval.constants.model_config import MODEL_CONFIG_MAPPING
+from bfcl_eval.eval_checker.eval_runner import main as evaluation_main
 
 
 class ExecutionOrderGroup(typer.core.TyperGroup):
@@ -57,12 +54,16 @@ def handle_multiple_input(input_str):
 
     return [item.strip() for item in ",".join(input_str).split(",") if item.strip()]
 
+
 @cli.command()
 def version():
     """
     Show the bfcl version. PyPI versions are in development, please rely on the commit hash for reproducibility.
     """
-    print(f"bfcl version: {_version('bfcl')} \nNote: pypi versions are in development, please rely on the commit hash for reproducibility.")
+    print(
+        f"bfcl version: {_version('bfcl')} \nNote: pypi versions are in development, please rely on the commit hash for reproducibility."
+    )
+
 
 @cli.command()
 def test_categories():
@@ -96,14 +97,14 @@ def models():
 @cli.command()
 def generate(
     model: List[str] = typer.Option(
-        ["gorilla-openfunctions-v2"], 
+        ["gorilla-openfunctions-v2"],
         help="A list of model names to generate the llm response. Use commas to separate multiple models.",
-        callback=handle_multiple_input
+        callback=handle_multiple_input,
     ),
     test_category: List[str] = typer.Option(
-        ["all"], 
+        ["all"],
         help="A list of test categories to run the evaluation on. Use commas to separate multiple test categories.",
-        callback=handle_multiple_input
+        callback=handle_multiple_input,
     ),
     temperature: float = typer.Option(
         0.001, help="The temperature parameter for the model."
@@ -119,8 +120,12 @@ def generate(
         help="Exclude info about the state of each API system after each turn in the inference log; only relevant for multi-turn categories.",
     ),
     num_gpus: int = typer.Option(1, help="The number of GPUs to use."),
-    num_threads: Optional[int] = typer.Option(None, help="The number of threads to use."),
-    gpu_memory_utilization: float = typer.Option(0.9, help="The GPU memory utilization."),
+    num_threads: Optional[int] = typer.Option(
+        None, help="The number of threads to use."
+    ),
+    gpu_memory_utilization: float = typer.Option(
+        0.9, help="The GPU memory utilization."
+    ),
     backend: str = typer.Option("sglang", help="The backend to use for the model."),
     skip_server_setup: bool = typer.Option(
         False,
@@ -169,7 +174,9 @@ def generate(
         allow_overwrite=allow_overwrite,
         run_ids=run_ids,
     )
-    load_dotenv(dotenv_path=DOTENV_PATH, verbose=True, override=True)  # Load the .env file
+    load_dotenv(
+        dotenv_path=DOTENV_PATH, verbose=True, override=True
+    )  # Load the .env file
     generation_main(args)
 
 
@@ -216,7 +223,9 @@ def results(
         results_data.append(
             (
                 display_name(dir.name),
-                datetime.fromtimestamp(dir.stat().st_ctime).strftime("%Y-%m-%d %H:%M:%S"),
+                datetime.fromtimestamp(dir.stat().st_ctime).strftime(
+                    "%Y-%m-%d %H:%M:%S"
+                ),
             )
         )
 
@@ -232,14 +241,12 @@ def results(
 @cli.command()
 def evaluate(
     model: List[str] = typer.Option(
-        None, 
-        help="A list of model names to evaluate.",
-        callback=handle_multiple_input
+        None, help="A list of model names to evaluate.", callback=handle_multiple_input
     ),
     test_category: List[str] = typer.Option(
-        ["all"], 
+        ["all"],
         help="A list of test categories to run the evaluation on.",
-        callback=handle_multiple_input
+        callback=handle_multiple_input,
     ),
     result_dir: str = typer.Option(
         None,
@@ -261,7 +268,9 @@ def evaluate(
     Evaluate results from run of one or more models on a test-category (same as eval_runner.py).
     """
 
-    load_dotenv(dotenv_path=DOTENV_PATH, verbose=True, override=True)  # Load the .env file
+    load_dotenv(
+        dotenv_path=DOTENV_PATH, verbose=True, override=True
+    )  # Load the .env file
     evaluation_main(model, test_category, result_dir, score_dir, partial_eval)
 
 
