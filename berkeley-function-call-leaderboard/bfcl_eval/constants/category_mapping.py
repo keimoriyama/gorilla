@@ -36,6 +36,7 @@ MULTI_TURN_CATEGORY = [
     "multi_turn_miss_func",
     "multi_turn_miss_param",
     "multi_turn_long_context",
+    "japanese_multi_turn",
     # "multi_turn_composite",
 ]
 WEB_SEARCH_CATEGORY = [

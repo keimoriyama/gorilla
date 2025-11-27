@@ -11,6 +11,7 @@ MULTI_TURN_FUNC_DOC_FILE_MAPPING = {
     "MemoryAPI_kv": "memory_kv.json",
     "MemoryAPI_vector": "memory_vector.json",
     "MemoryAPI_rec_sum": "memory_rec_sum.json",
+    "tool_description_ja": "tool_multi_ja.json",
 }
 
 BACKEND_PATH_PREFIX = "bfcl_eval.eval_checker.multi_turn_eval.func_source_code"
