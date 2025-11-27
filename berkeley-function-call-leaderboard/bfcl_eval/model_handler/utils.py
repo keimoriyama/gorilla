@@ -272,6 +272,7 @@ def ast_parse(
         else:
             for elem in parsed.body.elts:
                 assert isinstance(elem, ast.Call)
+                print(resolve_ast_call(elem))
                 extracted.append(resolve_ast_call(elem))
         return extracted
 
