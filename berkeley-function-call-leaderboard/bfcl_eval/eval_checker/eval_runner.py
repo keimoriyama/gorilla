@@ -352,7 +352,6 @@ def _evaluate_single_ast_entry(
             "model_result_raw": model_result_item_raw,
             "possible_answer": possible_answer_item,
         }
-
     decoder_output_valid = is_function_calling_format_output(model_result_item)
     if not decoder_output_valid:
         return {
@@ -745,6 +744,7 @@ def evaluate_task(
             )
         # Single turn test
         else:
+            import ipdb;ipdb.set_trace()
             accuracy, total_count = ast_file_runner(
                 handler,
                 model_result,
