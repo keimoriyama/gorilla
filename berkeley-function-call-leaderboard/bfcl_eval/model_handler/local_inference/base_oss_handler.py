@@ -6,17 +6,16 @@ from pathlib import Path
 from typing import Any, Optional
 
 import requests
+from openai import OpenAI
+from overrides import EnforceOverrides, final, override
+
 from bfcl_eval.constants.enums import ModelStyle
 from bfcl_eval.constants.eval_config import LOCAL_SERVER_PORT
 from bfcl_eval.model_handler.base_handler import BaseHandler
 from bfcl_eval.model_handler.utils import (
-    default_decode_ast_prompting,
-    default_decode_execute_prompting,
-    system_prompt_pre_processing_chat_model,
-)
+    default_decode_ast_prompting, default_decode_execute_prompting,
+    system_prompt_pre_processing_chat_model)
 from bfcl_eval.utils import contain_multi_turn_interaction
-from openai import OpenAI
-from overrides import EnforceOverrides, final, override
 
 
 class OSSHandler(BaseHandler, EnforceOverrides):
@@ -42,7 +41,9 @@ class OSSHandler(BaseHandler, EnforceOverrides):
         self.local_server_endpoint = os.getenv("LOCAL_SERVER_ENDPOINT", "localhost")
         self.local_server_port = os.getenv("LOCAL_SERVER_PORT", LOCAL_SERVER_PORT)
 
-        self.base_url = f"http://{self.local_server_endpoint}:{self.local_server_port}/v1"
+        self.base_url = (
+            f"http://{self.local_server_endpoint}:{self.local_server_port}/v1"
+        )
         self.client = OpenAI(base_url=self.base_url, api_key="EMPTY")
 
     @override
@@ -154,7 +155,6 @@ class OSSHandler(BaseHandler, EnforceOverrides):
                         text=True,  # To get the output as text instead of bytes
                     )
                 elif backend == "sglang":
-
                     process = subprocess.Popen(
                         [
                             "python",
@@ -192,10 +192,12 @@ class OSSHandler(BaseHandler, EnforceOverrides):
 
                 # Start threads to read and print stdout and stderr
                 stdout_thread = threading.Thread(
-                    target=log_subprocess_output, args=(process.stdout, self._stop_event)
+                    target=log_subprocess_output,
+                    args=(process.stdout, self._stop_event),
                 )
                 stderr_thread = threading.Thread(
-                    target=log_subprocess_output, args=(process.stderr, self._stop_event)
+                    target=log_subprocess_output,
+                    args=(process.stderr, self._stop_event),
                 )
                 stdout_thread.setDaemon(True)
                 stderr_thread.setDaemon(True)
@@ -371,7 +373,10 @@ class OSSHandler(BaseHandler, EnforceOverrides):
 
     @override
     def _add_execution_results_prompting(
-        self, inference_data: dict, execution_results: list[str], model_response_data: dict
+        self,
+        inference_data: dict,
+        execution_results: list[str],
+        model_response_data: dict,
     ) -> dict:
         for execution_result, decoded_model_response in zip(
             execution_results, model_response_data["model_responses_decoded"]

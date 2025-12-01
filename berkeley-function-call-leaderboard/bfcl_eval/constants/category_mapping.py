@@ -16,7 +16,7 @@ NON_LIVE_CATEGORY = [
     "parallel_multiple",
     "irrelevance",
     # "exec_simple",
-    "conversationsclean",
+    "conversationsclean_modified",
     "dialogacts",
     # "exec_parallel",
     # "exec_multiple",
