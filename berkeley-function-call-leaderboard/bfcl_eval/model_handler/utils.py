@@ -271,9 +271,7 @@ def ast_parse(
             extracted.append(resolve_ast_call(parsed.body))
         else:
             for elem in parsed.body.elts:
-                print(ast.dump(elem))
                 assert isinstance(elem, ast.Call)
-                print(resolve_ast_call(elem))
                 extracted.append(resolve_ast_call(elem))
         return extracted
 
@@ -316,6 +314,7 @@ def ast_parse(
 
 def resolve_ast_call(elem):
     # Handle nested attributes for deeply nested module paths
+    print(elem)
     func_parts = []
     func_part = elem.func
     while isinstance(func_part, ast.Attribute):
