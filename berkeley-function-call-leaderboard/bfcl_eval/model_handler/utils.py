@@ -266,7 +266,6 @@ def ast_parse(
         cleaned_input = input_str.strip().strip("'")
         parsed = ast.parse(cleaned_input, mode="eval")
         extracted = []
-        print(ast.dump(parsed.body))
         if isinstance(parsed.body, ast.Call):
             extracted.append(resolve_ast_call(parsed.body))
         else:
