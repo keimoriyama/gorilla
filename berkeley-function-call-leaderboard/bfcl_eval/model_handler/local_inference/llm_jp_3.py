@@ -30,7 +30,7 @@ class LLMjp3Handler(OSSHandler):
         """
         formatted_prompt = messages[0]["content"] + "\n"
         formatted_prompt += "User query: " + messages[1]["content"] + "\n"
-        print(formatted_prompt)
+        # print(formatted_prompt)
         return formatted_prompt
 
     @override
