@@ -261,16 +261,17 @@ def ast_parse(
             input_str = match.group(1).strip()
         else:
             raise ValueError(f"No tool call tag found in input string: {input_str}")
-
     if language == ReturnFormat.PYTHON:
         # We only want to remove wrapping quotes that could have been added by the model.
         cleaned_input = input_str.strip().strip("'")
         parsed = ast.parse(cleaned_input, mode="eval")
         extracted = []
+        print(ast.dump(parsed.body))
         if isinstance(parsed.body, ast.Call):
             extracted.append(resolve_ast_call(parsed.body))
         else:
             for elem in parsed.body.elts:
+                print(ast.dump(elem))
                 assert isinstance(elem, ast.Call)
                 print(resolve_ast_call(elem))
                 extracted.append(resolve_ast_call(elem))
