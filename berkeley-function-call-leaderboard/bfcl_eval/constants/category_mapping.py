@@ -36,8 +36,8 @@ MULTI_TURN_CATEGORY = [
     "multi_turn_miss_func",
     "multi_turn_miss_param",
     "multi_turn_long_context",
-    "conversationsclean",
-    "dialogacts",
+    "multi_turn_conversationsclean",
+    "multi_turn_dialogacts",
     # "japanese_multi_turn",
     # "multi_turn_composite",
 ]
