@@ -15,8 +15,6 @@ NON_LIVE_CATEGORY = [
     "parallel",
     "parallel_multiple",
     "irrelevance",
-    "conversationsclean",
-    "dialogacts",
     # "exec_simple",
     # "exec_parallel",
     # "exec_multiple",
@@ -38,6 +36,8 @@ MULTI_TURN_CATEGORY = [
     "multi_turn_miss_func",
     "multi_turn_miss_param",
     "multi_turn_long_context",
+    "conversationsclean",
+    "dialogacts",
     # "japanese_multi_turn",
     # "multi_turn_composite",
 ]
