@@ -314,7 +314,6 @@ def ast_parse(
 
 def resolve_ast_call(elem):
     # Handle nested attributes for deeply nested module paths
-    print(elem)
     func_parts = []
     func_part = elem.func
     while isinstance(func_part, ast.Attribute):
