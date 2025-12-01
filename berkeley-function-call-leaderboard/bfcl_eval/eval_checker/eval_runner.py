@@ -744,7 +744,6 @@ def evaluate_task(
             )
         # Single turn test
         else:
-            import ipdb;ipdb.set_trace()
             accuracy, total_count = ast_file_runner(
                 handler,
                 model_result,
