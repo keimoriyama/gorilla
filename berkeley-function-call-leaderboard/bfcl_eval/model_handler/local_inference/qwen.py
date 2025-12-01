@@ -1,7 +1,8 @@
 from typing import Any
 
-from bfcl_eval.model_handler.local_inference.base_oss_handler import OSSHandler
 from overrides import override
+
+from bfcl_eval.model_handler.local_inference.base_oss_handler import OSSHandler
 
 
 class QwenHandler(OSSHandler):
@@ -113,7 +114,9 @@ class QwenHandler(OSSHandler):
         formatted_prompt = ""
 
         if messages[0]["role"] == "system":
-            formatted_prompt += f"<|im_start|>system\n{messages[0]['content']}<|im_end|>\n"
+            formatted_prompt += (
+                f"<|im_start|>system\n{messages[0]['content']}<|im_end|>\n"
+            )
 
         last_query_index = len(messages) - 1
         for offset, message in enumerate(reversed(messages)):
@@ -165,7 +168,9 @@ class QwenHandler(OSSHandler):
 
             elif role == "tool":
                 prev_role = messages[idx - 1]["role"] if idx > 0 else None
-                next_role = messages[idx + 1]["role"] if idx < len(messages) - 1 else None
+                next_role = (
+                    messages[idx + 1]["role"] if idx < len(messages) - 1 else None
+                )
 
                 if idx == 0 or prev_role != "tool":
                     formatted_prompt += "<|im_start|>user"

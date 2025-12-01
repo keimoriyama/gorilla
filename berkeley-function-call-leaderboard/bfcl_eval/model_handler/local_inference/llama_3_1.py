@@ -1,7 +1,8 @@
 import json
 
-from bfcl_eval.model_handler.local_inference.base_oss_handler import OSSHandler
 from overrides import override
+
+from bfcl_eval.model_handler.local_inference.base_oss_handler import OSSHandler
 
 
 class LlamaHandler_3_1(OSSHandler):
@@ -10,9 +11,10 @@ class LlamaHandler_3_1(OSSHandler):
     Per their model card, function calling is handled in the same way as
     the Hugging Face chat template suggests.
     https://www.llama.com/docs/model-cards-and-prompt-formats/llama3_1/#json-based-tool-calling
-    
+
     For all other Llama models, see the LlamaHandler class.
     """
+
     def __init__(
         self,
         model_name,
@@ -231,7 +233,7 @@ class LlamaHandler_3_1(OSSHandler):
             name = func_call["name"]
             params = func_call["parameters"]
             execution_list.append(
-                f"{name}({','.join([f'{k}={repr(v)}' for k,v in params.items()])})"
+                f"{name}({','.join([f'{k}={repr(v)}' for k, v in params.items()])})"
             )
 
         return execution_list
