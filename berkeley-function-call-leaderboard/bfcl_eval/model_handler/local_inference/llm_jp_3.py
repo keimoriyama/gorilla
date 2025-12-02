@@ -27,9 +27,9 @@ class LLMjp3Handler(OSSHandler):
         # For Llama 4 series, they use a different set of tokens than Llama 3
         formatted_prompt = ""
         for message in messages:
-            if messages["role"] == "user":
+            if message["role"] == "user":
                 formatted_prompt += "user input:" + message["content"] + "\n"
-            elif messages["role"] == "assistant":
+            elif message["role"] == "assistant":
                 formatted_prompt += "assistant: " + message["content"] + "\n"
         return formatted_prompt
 
