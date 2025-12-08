@@ -28,6 +28,7 @@ class LLMjp3Handler(OSSHandler):
         formatted_prompt = ""
         for message in messages:
             if message["role"] == "user":
+                print(message["content"])
                 formatted_prompt += "user input:" + message["content"] + "\n"
             elif message["role"] == "assistant":
                 formatted_prompt += "assistant: " + str(message["content"]) + "\n"
