@@ -382,7 +382,7 @@ def system_prompt_pre_processing_chat_model(
     Add a system prompt to the chat model to instruct the model on the available functions and the expected response format.
     If the prompts list already contains a system prompt, append the additional system prompt content to the existing system prompt.
     """
-    assert type(prompts) == list
+    assert type(prompts) == list, f"list is expected, but got {type(prompts)}"
 
     prompt_format = extract_prompt_format_from_id(test_entry_id)
 

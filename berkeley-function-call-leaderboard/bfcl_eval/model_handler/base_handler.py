@@ -739,6 +739,7 @@ class BaseHandler:
         self, test_entry: dict, include_input_log: bool
     ) -> tuple[any, dict]:
         inference_data: dict = self._pre_query_processing_prompting(test_entry)
+        # print(inference_data)
         inference_data = self.add_first_turn_message_prompting(
             inference_data, test_entry["question"][0]
         )
