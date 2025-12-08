@@ -2097,6 +2097,18 @@ third_party_inference_model_map = {
         is_fc_model=False,
         underscore_to_dot=False,
     ),
+    "llm-jp-3-13b-instruct3": ModelConfig(
+        model_name="llm-jp-3-1.8b",
+        display_name="llm-jp-3-1.8b-instruct3 (FC)",
+        url="https://huggingface.co/llm-jp/llm-jp-3-13b-instruct3",
+        org="llm-jp",
+        license="apache-2.0",
+        model_handler=LLMjp3Handler,
+        input_price=None,
+        output_price=None,
+        is_fc_model=False,
+        underscore_to_dot=False,
+    ),
     "llm-jp-3.1-13b-instruct4": ModelConfig(
         model_name="llm-jp-3.1-13b-instruct4",
         display_name="llm-jp-3.1-13b-instruct4 (FC)",
