@@ -352,7 +352,6 @@ def _evaluate_single_ast_entry(
             "model_result_raw": model_result_item_raw,
             "possible_answer": possible_answer_item,
         }
-    print(model_result_item)
     decoder_output_valid = is_function_calling_format_output(model_result_item)
     if not decoder_output_valid:
         return {
@@ -563,7 +562,7 @@ def multi_turn_runner(
     correct_count = 0
     for i in range(len(model_result)):
         index = model_result[i]["id"]
-        #if index == "multi_turn_base_167":
+        # if index == "multi_turn_base_167":
         #    import ipdb;ipdb.set_trace()
         multi_turn_model_result_list = model_result[i]["result"]
         multi_turn_ground_truth_list = possible_answer[i]["ground_truth"]
@@ -806,7 +805,7 @@ def runner(
             ):
                 continue
             model_result = load_file(model_result_json, sort_by_id=True)
-            #if 'conversationsclean' in test_category:
+            # if 'conversationsclean' in test_category:
             #    import ipdb;ipdb.set_trace()
 
             leaderboard_table = evaluate_task(
