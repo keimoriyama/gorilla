@@ -30,7 +30,7 @@ class LLMjp3Handler(OSSHandler):
             if message["role"] == "user":
                 formatted_prompt += "user input:" + message["content"] + "\n"
             elif message["role"] == "assistant":
-                formatted_prompt += "assistant: " + message["content"] + "\n"
+                formatted_prompt += "assistant: " + str(message["content"]) + "\n"
         return formatted_prompt
 
     @override
