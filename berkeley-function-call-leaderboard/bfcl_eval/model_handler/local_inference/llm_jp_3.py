@@ -51,19 +51,19 @@ class LLMjp3Handler(OSSHandler):
 
         return inference_data
 
-    @override
-    def decode_execute(self, result, has_tool_call_tag):
-        function_calls = eval(result)
-        if isinstance(function_calls, dict):
-            function_calls = [function_calls]
-
-        execution_list = []
-        for func_call in function_calls:
-            name = func_call["name"]
-            params = func_call["arguments"]
-            execution_list.append(
-                f"{name}({','.join([f'{k}={repr(v)}' for k, v in params.items()])})"
-            )
-        print(f"function calls: {function_calls}")
-        print(f"converted function calls: {execution_list}")
-        return execution_list
+    # @override
+    # def decode_execute(self, result, has_tool_call_tag):
+    #     function_calls = eval(result)
+    #     if isinstance(function_calls, dict):
+    #         function_calls = [function_calls]
+    #
+    #     execution_list = []
+    #     for func_call in function_calls:
+    #         name = func_call["name"]
+    #         params = func_call["arguments"]
+    #         execution_list.append(
+    #             f"{name}({','.join([f'{k}={repr(v)}' for k, v in params.items()])})"
+    #         )
+    #     print(f"function calls: {function_calls}")
+    #     print(f"converted function calls: {execution_list}")
+    #     return execution_list
