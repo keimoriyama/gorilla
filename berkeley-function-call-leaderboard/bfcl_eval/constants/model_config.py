@@ -2033,7 +2033,7 @@ third_party_inference_model_map = {
         model_handler=NovitaHandler,
         input_price=0.18,
         output_price=0.2,
-        is_fc_model=False
+        is_fc_model=False,
         underscore_to_dot=False,
     ),
     # Via Qwen Agent Framework
