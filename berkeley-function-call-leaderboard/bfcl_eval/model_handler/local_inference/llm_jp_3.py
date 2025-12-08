@@ -64,5 +64,5 @@ class LLMjp3Handler(OSSHandler):
             execution_list.append(
                 f"{name}({','.join([f'{k}={repr(v)}' for k, v in params.items()])})"
             )
-
+        print(execution_list)
         return execution_list
