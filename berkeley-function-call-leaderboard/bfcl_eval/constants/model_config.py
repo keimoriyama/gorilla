@@ -2076,7 +2076,7 @@ third_party_inference_model_map = {
     "llm-jp-3-1.8b-instruct3": ModelConfig(
         model_name="llm-jp-3-1.8b",
         display_name="llm-jp-3-1.8b-instruct3 (FC)",
-        url="https://huggingface.co/llm-jp/llm-jp-3-1.8b",
+        url="https://huggingface.co/llm-jp/llm-jp-3-1.8b-instruct3",
         org="llm-jp",
         license="apache-2.0",
         model_handler=LLMjp3Handler,
