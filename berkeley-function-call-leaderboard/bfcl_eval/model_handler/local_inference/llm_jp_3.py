@@ -64,5 +64,6 @@ class LLMjp3Handler(OSSHandler):
             execution_list.append(
                 f"{name}({','.join([f'{k}={repr(v)}' for k, v in params.items()])})"
             )
-        print(execution_list)
+        print(f"function calls: {function_calls}")
+        print(f"converted function calls: {execution_list}")
         return execution_list
