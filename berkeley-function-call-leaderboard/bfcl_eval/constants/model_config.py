@@ -2121,6 +2121,30 @@ third_party_inference_model_map = {
         is_fc_model=False,
         underscore_to_dot=False,
     ),
+    "qwen2.5-1.5b": ModelConfig(
+        model_name="qwen2.5-1.5b",
+        display_name="Qwen2.5-1.5B (Prompt)",
+        url="https://huggingface.co/Qwen/Qwen2.5-1.5B",
+        org="Qwen",
+        license="apache-2.0",
+        model_handler=QwenHandler,
+        input_price=None,
+        output_price=None,
+        is_fc_model=False,
+        underscore_to_dot=False,
+    ),
+    "llama-3.2-1b": ModelConfig(
+        model_name="meta-llama/Llama-3.2-1B",
+        display_name="Llama-3.1-1B-Instruct (Prompt)",
+        url="https://huggingface.co/meta-llama/Llama-3.2-1B",
+        org="Meta",
+        license="Meta Llama 3 Community",
+        model_handler=LlamaHandler,
+        input_price=None,
+        output_price=None,
+        is_fc_model=False,
+        underscore_to_dot=False,
+    ),
 }
 
 
