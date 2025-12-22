@@ -11,10 +11,9 @@ def main(args):
     # プロンプトの構築
     data = []
     with open("./bfcl_eval/data/BFCL_v4_simple_python.json", "r") as f:
-        import ipdb;ipdb.set_trace()
         lines = f.readlines()
         for l in lines:
-            data.append(json.load(l))
+            data.append(json.loads(l))
 
     # モデルの応答
 
