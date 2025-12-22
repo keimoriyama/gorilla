@@ -14,7 +14,7 @@ def main(args):
         lines = f.readlines()
         for l in lines:
             data.append(json.loads(l))
-
+    import ipdb;ipdb.set_trace()
     # モデルの応答
 
 
