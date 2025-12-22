@@ -90,7 +90,6 @@ def extract_prompt_format_from_id(test_entry_id: str) -> str:
         ), f"Test entry ID {test_entry_id} should contain exactly two colons, since they are supposed to be the format sensitivity ids."
         return test_entry_id.split(":")[1]
 
-
 def extract_memory_backend_type(test_category):
     """
     This function extracts the memory backend type from the test category.
