@@ -45,6 +45,7 @@ class LLMjp3Handler(OSSHandler):
         for func in function:
             formatted_prompot += json.dumps(func, indent=4) + "\n"
         formatted_prompt += "Assistant: "
+        print(formatted_prompt)
         return formatted_prompt
 
     @override
