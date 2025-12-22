@@ -16,8 +16,8 @@ Assistant:
 def main(args):
     model = AutoModelForCausalLM.from_pretrained(args.model_path, device_map="auto")
     tokenizer = AutoTokenizer.from_pretrained(args.model_path)
-    # プロンプトの構築
     data = []
+    # プロンプトの構築
     with open("./bfcl_eval/data/BFCL_v4_simple_python.json", "r") as f:
         lines = f.readlines()
         for l in lines:

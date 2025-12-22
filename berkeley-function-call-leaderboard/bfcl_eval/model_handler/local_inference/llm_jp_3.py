@@ -1,4 +1,5 @@
 from overrides import override
+import json
 
 from bfcl_eval.model_handler.local_inference.base_oss_handler import OSSHandler
 
@@ -37,9 +38,13 @@ class LLMjp3Handler(OSSHandler):
         formatted_prompt = TASK_INSTRUCTION + "\n" + FORMAT_INSTRUCTION
         for message in messages:
             if message["role"] == "user":
-                formatted_prompt += "user input:" + str(message["content"]) + "\n"
+                formatted_prompt += "User query: " + str(message["content"]) + "\n"
             elif message["role"] == "assistant":
-                formatted_prompt += "assistant: " + str(message["content"]) + "\n"
+                formatted_prompt += "Assistant: " + str(message["content"]) + "\n"
+        formatted_prompt += "The available APIs are as follows:\n\n"
+        for func in functions:
+            formatted_prompot += json.dumps(func, indent=4) + "\n"
+        formatted_prompt += "Assistant: "
         return formatted_prompt
 
     @override
