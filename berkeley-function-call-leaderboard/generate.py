@@ -40,7 +40,7 @@ def main(args):
         temperature=0.7,
         eos_token_id=tokenizer.eos_token_id,
     )
-    response = tokenizer.decode(output[0], skip_special_tokens=True)
+    response = tokenizer.decode(output[0][len(inputs) :], skip_special_tokens=True)
     print("=== Prompt ===")
     print(prompt)
     print("=== Response ===")
