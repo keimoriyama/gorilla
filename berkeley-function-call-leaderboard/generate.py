@@ -24,7 +24,6 @@ def main(args):
             data.append(json.loads(l))
 
     item = data[0]
-    # import ipdb;ipdb.set_trace()
     prompt = item["question"][0][0]["content"]
     functions = item["function"]
     system_prompt = SYSTEM_PROMPT.replace("${functions}", json.dumps(functions))
@@ -40,7 +39,7 @@ def main(args):
         temperature=0.7,
         eos_token_id=tokenizer.eos_token_id,
     )
-    response = tokenizer.decode(output[0][len(inputs) :], skip_special_tokens=True)
+    response = tokenizer.decode(output[0][len(inputs[0]) :], skip_special_tokens=True)
     print("=== Prompt ===")
     print(prompt)
     print("=== Response ===")
