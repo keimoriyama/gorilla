@@ -29,7 +29,6 @@ class ExecutionOrderGroup(typer.core.TyperGroup):
             "version",
         ]
 
-
 cli = typer.Typer(
     context_settings=dict(help_option_names=["-h", "--help"]),
     no_args_is_help=True,
@@ -79,7 +78,6 @@ def test_categories():
         tablefmt="grid",
     )
     print(table)
-
 
 @cli.command()
 def models():

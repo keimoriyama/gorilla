@@ -2,6 +2,15 @@ from overrides import override
 
 from bfcl_eval.model_handler.local_inference.base_oss_handler import OSSHandler
 
+TASK_INSTRUCTION = """
+Based on the previous context and API request history, generate an API request or a response as an AI assistant.""".strip()
+FORMAT_INSTRUCTION = """
+The output should be of the JSON format, which specifies a list of generated function calls. The example format is as follows, please make sure the parameter type is correct. If no function call is needed, please make tool_calls an empty list "[]".
+```
+{"thought": "the thought process, or an empty string", "tool_calls": [{"name": "api_name1", "arguments": {"argument1": "value1", "argument2": "value2"}}]}
+```
+""".strip()
+
 
 class LLMjp3Handler(OSSHandler):
     """
@@ -25,7 +34,7 @@ class LLMjp3Handler(OSSHandler):
     @override
     def _format_prompt(self, messages, function):
         # For Llama 4 series, they use a different set of tokens than Llama 3
-        formatted_prompt = ""
+        formatted_prompt = TASK_INSTRUCTION + "\n" + FORMAT_INSTRUCTION
         for message in messages:
             if message["role"] == "user":
                 formatted_prompt += "user input:" + str(message["content"]) + "\n"
