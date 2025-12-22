@@ -9,8 +9,10 @@ def main(args):
     model = AutoModelForCausalLM.from_pretrained(args.model_path)
     tokenizer = AutoTokenizer.from_pretrained(args.model_path)
     # プロンプトの構築
+    data = []
     with open("./bfcl_eval/data/BFCL_v4_simple_python.json", "r") as f:
-        data = json.load(f)
+        for l in f.readlines():
+            data.append(json.load(f))
 
     # モデルの応答
 
