@@ -42,7 +42,7 @@ class LLMjp3Handler(OSSHandler):
             elif message["role"] == "assistant":
                 formatted_prompt += "Assistant: " + str(message["content"]) + "\n"
         formatted_prompt += "The available APIs are as follows:\n\n"
-        for func in functions:
+        for func in function:
             formatted_prompot += json.dumps(func, indent=4) + "\n"
         formatted_prompt += "Assistant: "
         return formatted_prompt
