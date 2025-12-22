@@ -24,7 +24,8 @@ def main(args):
             data.append(json.loads(l))
 
     item = data[0]
-    prompt = item["question"][0]["content"]
+    # import ipdb;ipdb.set_trace()
+    prompt = item["question"][0][0]["content"]
     functions = item["function"]
     system_prompt = SYSTEM_PROMPT.replace("${functions}", json.dumps(functions))
     user_prompt = USER_ASSISTANT_PROMPT.replace("${user_query}", prompt)
