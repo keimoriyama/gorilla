@@ -14,7 +14,7 @@ Assistant:
 
 
 def main(args):
-    model = AutoModelForCausalLM.from_pretrained(args.model_path)
+    model = AutoModelForCausalLM.from_pretrained(args.model_path, device_map="auto")
     tokenizer = AutoTokenizer.from_pretrained(args.model_path)
     # プロンプトの構築
     data = []
@@ -31,9 +31,9 @@ def main(args):
     user_prompt = USER_ASSISTANT_PROMPT.replace("${user_query}", prompt)
     prompt = system_prompt + "\n\n" + user_prompt
     # モデルの応答
-    inputs = tokenizer(prompt, return_tensors="pt")
+    inputs = tokenizer.encode(prompt, return_tensors="pt")
     output = model.generate(
-        **inputs,
+        inputs,
         max_new_tokens=512,
         do_sample=True,
         top_p=0.9,
