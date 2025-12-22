@@ -43,7 +43,7 @@ class LLMjp3Handler(OSSHandler):
                 formatted_prompt += "Assistant: " + str(message["content"]) + "\n"
         formatted_prompt += "The available APIs are as follows:\n\n"
         for func in function:
-            formatted_prompot += json.dumps(func, indent=4) + "\n"
+            formatted_prompt += json.dumps(func, indent=4) + "\n"
         formatted_prompt += "Assistant: "
         print(formatted_prompt)
         return formatted_prompt
