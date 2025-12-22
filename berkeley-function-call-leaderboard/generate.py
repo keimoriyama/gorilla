@@ -22,28 +22,29 @@ def main(args):
         lines = f.readlines()
         for l in lines:
             data.append(json.loads(l))
-
-    item = data[0]
-    prompt = item["question"][0][0]["content"]
-    functions = item["function"]
-    system_prompt = SYSTEM_PROMPT.replace("${functions}", json.dumps(functions))
-    user_prompt = USER_ASSISTANT_PROMPT.replace("${user_query}", prompt)
-    prompt = system_prompt + "\n\n" + user_prompt
-    # モデルの応答
-    inputs = tokenizer.encode(prompt, return_tensors="pt")
-    output = model.generate(
-        inputs,
-        max_new_tokens=512,
-        do_sample=True,
-        top_p=0.9,
-        temperature=0.7,
-        eos_token_id=tokenizer.eos_token_id,
-    )
-    response = tokenizer.decode(output[0][len(inputs[0]) :], skip_special_tokens=True)
-    print("=== Prompt ===")
-    print(prompt)
-    print("=== Response ===")
-    print(response)
+    for item in data[:5]:
+        prompt = item["question"][0][0]["content"]
+        functions = item["function"]
+        system_prompt = SYSTEM_PROMPT.replace("${functions}", json.dumps(functions))
+        user_prompt = USER_ASSISTANT_PROMPT.replace("${user_query}", prompt)
+        prompt = system_prompt + "\n\n" + user_prompt
+        # モデルの応答
+        inputs = tokenizer.encode(prompt, return_tensors="pt")
+        output = model.generate(
+            inputs,
+            max_new_tokens=512,
+            do_sample=True,
+            top_p=0.9,
+            temperature=0.7,
+            eos_token_id=tokenizer.eos_token_id,
+        )
+        response = tokenizer.decode(
+            output[0][len(inputs[0]) :], skip_special_tokens=True
+        )
+        print("=== Prompt ===")
+        print(prompt)
+        print("=== Response ===")
+        print(response)
 
 
 if __name__ == "__main__":
