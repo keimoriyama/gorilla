@@ -35,7 +35,7 @@ class LLMjp3Handler(OSSHandler):
     @override
     def _format_prompt(self, messages, function):
         # For Llama 4 series, they use a different set of tokens than Llama 3
-        formatted_prompt = TASK_INSTRUCTION + "\n" + FORMAT_INSTRUCTION
+        formatted_prompt = TASK_INSTRUCTION + "\n" + FORMAT_INSTRUCTION + "\n"
         for message in messages:
             if message["role"] == "user":
                 formatted_prompt += "User query: " + str(message["content"]) + "\n"
@@ -45,7 +45,6 @@ class LLMjp3Handler(OSSHandler):
         for func in function:
             formatted_prompt += json.dumps(func, indent=4) + "\n"
         formatted_prompt += "Assistant: "
-        print(formatted_prompt)
         return formatted_prompt
 
     @override
