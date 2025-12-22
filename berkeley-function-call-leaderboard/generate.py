@@ -12,7 +12,7 @@ def main(args):
     data = []
     with open("./bfcl_eval/data/BFCL_v4_simple_python.json", "r") as f:
         for l in f.readlines():
-            data.append(json.load(f))
+            data.append(json.load(l))
 
     # モデルの応答
 
