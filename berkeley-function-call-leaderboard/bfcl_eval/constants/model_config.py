@@ -6,8 +6,7 @@ from bfcl_eval.model_handler.api_inference.cohere import CohereHandler
 from bfcl_eval.model_handler.api_inference.deepseek import DeepSeekAPIHandler
 from bfcl_eval.model_handler.api_inference.dm_cito import DMCitoHandler
 from bfcl_eval.model_handler.api_inference.fireworks import FireworksHandler
-from bfcl_eval.model_handler.api_inference.functionary import \
-    FunctionaryHandler
+from bfcl_eval.model_handler.api_inference.functionary import FunctionaryHandler
 from bfcl_eval.model_handler.api_inference.gemini import GeminiHandler
 from bfcl_eval.model_handler.api_inference.glm import GLMAPIHandler
 from bfcl_eval.model_handler.api_inference.gogoagent import GoGoAgentHandler
@@ -21,23 +20,28 @@ from bfcl_eval.model_handler.api_inference.nemotron import NemotronHandler
 from bfcl_eval.model_handler.api_inference.nova import NovaHandler
 from bfcl_eval.model_handler.api_inference.novita import NovitaHandler
 from bfcl_eval.model_handler.api_inference.nvidia import NvidiaHandler
-from bfcl_eval.model_handler.api_inference.openai_completion import \
-    OpenAICompletionsHandler
-from bfcl_eval.model_handler.api_inference.openai_response import \
-    OpenAIResponsesHandler
+from bfcl_eval.model_handler.api_inference.openai_completion import (
+    OpenAICompletionsHandler,
+)
+from bfcl_eval.model_handler.api_inference.openai_response import OpenAIResponsesHandler
 from bfcl_eval.model_handler.api_inference.qwen import (
-    QwenAgentNoThinkHandler, QwenAgentThinkHandler, QwenAPIHandler)
+    QwenAgentNoThinkHandler,
+    QwenAgentThinkHandler,
+    QwenAPIHandler,
+)
 from bfcl_eval.model_handler.api_inference.writer import WriterHandler
 from bfcl_eval.model_handler.local_inference.arch import ArchHandler
 from bfcl_eval.model_handler.local_inference.bielik import BielikHandler
 from bfcl_eval.model_handler.local_inference.bitagent import BitAgentHandler
-from bfcl_eval.model_handler.local_inference.deepseek_reasoning import \
-    DeepseekReasoningHandler
+from bfcl_eval.model_handler.local_inference.deepseek_reasoning import (
+    DeepseekReasoningHandler,
+)
 from bfcl_eval.model_handler.local_inference.falcon_fc import Falcon3FCHandler
 from bfcl_eval.model_handler.local_inference.gemma import GemmaHandler
 from bfcl_eval.model_handler.local_inference.glm import GLMHandler
-from bfcl_eval.model_handler.local_inference.granite import \
-    GraniteFunctionCallingHandler
+from bfcl_eval.model_handler.local_inference.granite import (
+    GraniteFunctionCallingHandler,
+)
 from bfcl_eval.model_handler.local_inference.granite_3 import Granite3FCHandler
 from bfcl_eval.model_handler.local_inference.hammer import HammerHandler
 from bfcl_eval.model_handler.local_inference.llama import LlamaHandler
@@ -48,16 +52,18 @@ from bfcl_eval.model_handler.local_inference.minicpm_fc import MiniCPMFCHandler
 from bfcl_eval.model_handler.local_inference.mistral_fc import MistralFCHandler
 from bfcl_eval.model_handler.local_inference.phi import PhiHandler
 from bfcl_eval.model_handler.local_inference.phi_fc import PhiFCHandler
-from bfcl_eval.model_handler.local_inference.quick_testing_oss import \
-    QuickTestingOSSHandler
+from bfcl_eval.model_handler.local_inference.quick_testing_oss import (
+    QuickTestingOSSHandler,
+)
 from bfcl_eval.model_handler.local_inference.qwen import QwenHandler
 from bfcl_eval.model_handler.local_inference.qwen_fc import QwenFCHandler
-from bfcl_eval.model_handler.local_inference.salesforce_llama import \
-    SalesforceLlamaHandler
-from bfcl_eval.model_handler.local_inference.salesforce_qwen import \
-    SalesforceQwenHandler
-from bfcl_eval.model_handler.local_inference.think_agent import \
-    ThinkAgentHandler
+from bfcl_eval.model_handler.local_inference.salesforce_llama import (
+    SalesforceLlamaHandler,
+)
+from bfcl_eval.model_handler.local_inference.salesforce_qwen import (
+    SalesforceQwenHandler,
+)
+from bfcl_eval.model_handler.local_inference.think_agent import ThinkAgentHandler
 
 # -----------------------------------------------------------------------------
 # A mapping of model identifiers to their respective model configurations.
@@ -2100,6 +2106,18 @@ third_party_inference_model_map = {
     "llm-jp-3-13b-instruct3": ModelConfig(
         model_name="llm-jp-3-1.8b",
         display_name="llm-jp-3-1.8b-instruct3 (FC)",
+        url="https://huggingface.co/llm-jp/llm-jp-3-13b-instruct3",
+        org="llm-jp",
+        license="apache-2.0",
+        model_handler=LLMjp3Handler,
+        input_price=None,
+        output_price=None,
+        is_fc_model=False,
+        underscore_to_dot=False,
+    ),
+    "llm-jp-3-13b-instruct3-xlam": ModelConfig(
+        model_name="llm-jp-3-1.8b-xlam",
+        display_name="llm-jp-3-1.8b-instruct3-xlam (FC)",
         url="https://huggingface.co/llm-jp/llm-jp-3-13b-instruct3",
         org="llm-jp",
         license="apache-2.0",
