@@ -2127,7 +2127,7 @@ third_party_inference_model_map = {
         is_fc_model=False,
         underscore_to_dot=False,
     ),
-    "llm-jp-3-13b-instruct3-nemotoron": ModelConfig(
+    "llm-jp-3-13b-instruct3-nemotron": ModelConfig(
         model_name="llm-jp-3-1.8b-nemotron",
         display_name="llm-jp-3-1.8b-instruct3-nemotron (FC)",
         url="https://huggingface.co/llm-jp/llm-jp-3-13b-instruct3",
