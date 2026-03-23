@@ -45,3 +45,5 @@ berkeley-function-call-leaderboard/**/*.lock
 
 # Ignore the wandb cache:
 **/wandb/
+/.agent-shell/
+/berkeley-function-call-leaderboard/bfcl_eval/model_handler/local_inference/LLM_JP_4_README.md
