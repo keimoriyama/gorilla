@@ -47,6 +47,7 @@ from bfcl_eval.model_handler.local_inference.hammer import HammerHandler
 from bfcl_eval.model_handler.local_inference.llama import LlamaHandler
 from bfcl_eval.model_handler.local_inference.llama_3_1 import LlamaHandler_3_1
 from bfcl_eval.model_handler.local_inference.llm_jp_3 import LLMjp3Handler
+from bfcl_eval.model_handler.local_inference.llm_jp_4 import LLMjp4Handler
 from bfcl_eval.model_handler.local_inference.minicpm import MiniCPMHandler
 from bfcl_eval.model_handler.local_inference.minicpm_fc import MiniCPMFCHandler
 from bfcl_eval.model_handler.local_inference.mistral_fc import MistralFCHandler
@@ -2266,6 +2267,18 @@ third_party_inference_model_map = {
         org="Meta",
         license="Meta Llama 3 Community",
         model_handler=LlamaHandler,
+        input_price=None,
+        output_price=None,
+        is_fc_model=False,
+        underscore_to_dot=False,
+    ),
+    "llm-jp-4-sample": ModelConfig(
+        model_name="llm-jp-4-sample",
+        display_name="llm-jp-4-sample (Prompt)",
+        url="https://huggingface.co/llm-jp",
+        org="llm-jp",
+        license="apache-2.0",
+        model_handler=LLMjp4Handler,
         input_price=None,
         output_price=None,
         is_fc_model=False,
